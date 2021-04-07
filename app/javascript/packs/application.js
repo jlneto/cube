@@ -11,3 +11,19 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import Cube from "cubejs"
+
+var initialState = document.getElementById('initial_state')
+var solveButton = document.getElementByName('commit')
+function solveCube(initial_state) {
+    const cube = Cube.fromString(initialState.value)
+    Cube.initSolver()
+    cube.solve(50)
+    alert(cube.inspect)
+}
+solveButton.onClick(solveCube)
+
+
+
+
