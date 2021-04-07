@@ -1,0 +1,58 @@
+<%= form_tag cube_solve_path do %>
+  <p>
+    <label>
+      Inform here the initial state for yor cube:
+      Instructions Below!
+    </label>
+  </p>
+  <p>
+    <%= text_area_tag :initial_state, @example, cols: 20, rows: 8, style: 'font-family: Courier; text-align: center; text-transform: uppercase;'%>
+  </p>
+  <p>
+    <%= submit_tag 'Solve'%>
+  </p>
+<% end %>
+<h4>Instructions</h4>
+<pre>
+
+G = Green       L = Left
+Y = Yeloow      U = Up
+B = Blue        F = Front
+W = White       D = Down
+R = Red         R = Right
+O = Orange      B = Back
+
+L1 L2 L3 L4 L5 L6 L7 L8 L9
+U1 U2 U3 U4 U5 U6 U7 U8 U9
+F1 F2 F3 F4 F5 F6 F7 F8 F9
+D1 D2 D3 D4 D5 D6 D7 D8 D9
+R1 R2 R3 R4 R5 R6 R7 R8 R9
+B1 B2 B3 B4 B5 B6 B7 B8 B9
+
+                                Face 1
+                          |-----|-----|-----|
+                          |  U1 |  U2 |  U3 |
+                          |-----|-----|-----|
+                          |  U4 |  U5 |  U6 |
+                          |-----|-----|-----|
+                          |  U7 |  U8 |  U9 |
+                          |-----|-----|-----|
+
+          Face 0                Face 2                 Face 4                 Face 5
+    |-----|-----|-----|   |-----|-----|-----|   |-----|-----|-----|   |-----|-----|-----|
+    |  L1 |  L2 |  L3 |   |  F1 |  F2 |  F3 |   |  R1 |  R2 |  R3 |   |  B1 |  B2 |  B3 |
+    |-----|-----|-----|   |-----|-----|-----|   |-----|-----|-----|   |-----|-----|-----|
+    |  L4 |  L5 |  L6 |   |  F4 |  F5 |  F6 |   |  R4 |  R5 |  R6 |   |  B4 |  B5 |  B6 |
+    |-----|-----|-----|   |-----|-----|-----|   |-----|-----|-----|   |-----|-----|-----|
+    |  L7 |  L8 |  L9 |   |  F7 |  F8 |  F9 |   |  R7 |  R8 |  R9 |   |  B7 |  B8 |  B9 |
+    |-----|-----|-----|   |-----|-----|-----|   |-----|-----|-----|   |-----|-----|-----|
+
+                                Face 3
+                          |-----|-----|-----|
+                          |  D1 |  D2 |  D3 |
+                          |-----|-----|-----|
+                          |  D4 |  D5 |  D6 |
+                          |-----|-----|-----|
+                          |  D7 |  D8 |  D9 |
+                          |-----|-----|-----|
+</pre>

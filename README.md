@@ -1,24 +1,18 @@
-# README
+# Hot to solve the cube.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Genetal information about Rubik's Cube
+https://ruwix.com
 
-Things you may want to cover:
 
-* Ruby version
+https://rubikscu.be/#tutorial
+https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/step-1-first-layer-edges/
 
-* System dependencies
+# Gem wit a an easy two-cycle solution
+https://github.com/chrishunt/rubiks-cube
 
-* Configuration
+# JS to solve the cube
+https://www.npmjs.com/package/cubejs
 
-* Database creation
+# Library to display the cube Movements
+https://ruwix.com/widget/3d/?label=teste&alg=F2%20R%20B%20U%20D&flags=showalg
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

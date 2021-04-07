@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+.cube_display {
+    align-content: center;
+    width: 50%;
+}
