@@ -13,6 +13,7 @@ We woul like to use like these:
 
 ### WIREFRAME
 
+Solve Screen
 ```
 [ Logo ] Cube Solver
 
@@ -36,7 +37,7 @@ Solution:
 [                         ]
 [                         ]
 
-[ Show ]
+[ Show ] => Show Screen
 
 Instructions:
 
@@ -45,6 +46,17 @@ Instructions:
 ....
 
 ```
+Show Screen
+```
+    Your solution has 23 steps
+```
+![3dwidget.png](3dwidget.png)
+```    
+    [movements notation]
+    [colve a new one]
+
+```
+
 
 # ANALISYS AND DESIGN
 Allways for existing solutions for the similar problems.
@@ -179,8 +191,34 @@ Test it!
 
 # Automated Test
 
+Lets creata an automated test providng this cube state
 
+    BBORYYRGBWBGWGBGYWWOORRBYWOGGYGWOBOGOWBRBYRYRWOYROGRWY
+
+and expected result should be
+
+    R' D F2 L' F B R' B' D' B U F2 U' R2 F2 R2 U' F2 R2 F2 D2 R2 U
+
+and we expect to show the cube image on the show screen
+
+![3dwidget.png](3dwidget.png)
+
+To create such test we will use 
 
 # Deploy
+
+To deploy to heroku, create your account there and install the heroku client
+    
+```terminal
+    heroku create
+    git push heroku master
+    heroku run rake db:migrate   
+```
+
+Visit your app
+```terminal
+    heroku open    
+```
+
 
 

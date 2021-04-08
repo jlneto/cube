@@ -7,7 +7,7 @@ class CubeController < ApplicationController
 
   def show
     @solution = params[:solution]
-    @steps = @solution.split(' ').count
+    @steps = @solution.split(' ').count if @solution
     @cube_params = "alg=#{@solution}|flags=showalg"
   end
 
