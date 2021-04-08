@@ -1,7 +1,7 @@
 class CubeController < ApplicationController
 
   def solve
-    @initial_state = params[:initial_state] || MagicCube.samples[0][0]
+    @initial_state = params[:initial_state] || 'YOWBYBYBOYRRYGROBWGOBRROYWWOGBRWWGOORYRYBYRGGBGBWOGGWW'
     @solution = params[:solution]
   end
 

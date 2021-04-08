@@ -1,15 +1,50 @@
 # REQUIREMENTS:
-Give the Rubisk Cube, I neeed step by step instruction on how to solve it, the faster the better,
-but speed is not an issues.
+Given the Rubik Cube, we need step-by-step instructions on how to solve it. 
+The faster, the better, but speed is not an issue.
 
 ### USE CASE
-We woul like to use like these:
+We want to use the app this way:
 
 - We open the app
-- describe how my cube is now (scrambled!)
+- describe how my cube is now (color disposition on each face)
 - when finished describing it, hit a button to show me the solution
-- If I need another solution, repeat the process again.
-- It woul be veru nice to show the solution visualy, if possible.
+- If I need another solution, repeat the process.
+- It would be very nice to show the solution visually, if possible.
+
+
+# ANALISYS AND DESIGN
+Always look for existing solutions for similar problems.
+The time you spent in discovery, you will save much more in development.
+Searching the internet, you can find a lot of stuff about this cube, from competition to algorithms,
+tutorials.
+In our case, we are interested in how to solve. We find many tutorials and how to describe the steps
+General information about Rubik's Cube
+https://ruwix.com
+
+Are there finished libraries to give you the steps to solve it?  YES!!!!! Many!
+We searched: "Rubik code solution",  "Rubik code solution in ruby", "Rubik code solution in javascript".
+In the end, we selected these as promises:
+
+### solutiion methods
+https://rubikscu.be/#tutorial
+https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/step-1-first-layer-edges/
+
+### JS to solve the cube
+https://www.npmjs.com/package/cubejs
+
+### Gem wit a an easy two-cycle solution (DO NOT WORK!!!!)
+https://github.com/chrishunt/rubiks-cube
+
+### Library to display the cube Movements
+https://ruwix.com/widget/3d/?label=teste&alg=U R2 F' D' R U R2 F R B' L F2 U2 R2 D R2 U' R2 D F2 B2 D L2 F2&flags=showalg
+
+After this research, we decide to make a solution like this:
+
+Create the APP in ROR
+One main screen to receive the cube description, send to a solution library, and show the solution on the same screen.
+(1 controller: cube, 1 action: setup, 1 model:cube)
+On another screen show the solution animation, there is a 3D widget to display the solution:
+https://ruwix.com/widget/3d/?label=teste&alg=U R2 F' D' R U R2 F R B' L F2 U2 R2 D R2 U' R2 D F2 B2 D L2 F2&flags=showalg
 
 ### WIREFRAME
 
@@ -57,56 +92,14 @@ Show Screen
 
 ```
 
-
-# ANALISYS AND DESIGN
-Allways for existing solutions for the similar problems.
-The time you spent in discovery you will save much more in development.
-Searching the internet you can find a lot of stuff about fhis cube, from competiotion, to algorithims,
-tutorials.
-In our case, we are interested in how to solve. We find many tutorials, and how to describe the steps
-Genetal information about Rubik's Cube
-https://ruwix.com
-
-Are there finished libraries to give you the steps to solve it?  YES!!!!!  many
-we searched: "rubik code solution",  "rubik code solution in ruby", "rubik code solutionin javascript"
-at the end we selected this ones as promisses:
-
-https://github.com/chrishunt/rubiks-cube (ruby)
-https://www.npmjs.com/package/cubejs (javascript)
-
-### solutiion methods
-https://rubikscu.be/#tutorial
-https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/step-1-first-layer-edges/
-
-### JS to solve the cube
-https://www.npmjs.com/package/cubejs
-
-### Library to display the cube Movements
-https://ruwix.com/widget/3d/?label=teste&alg=U R2 F' D' R U R2 F R B' L F2 U2 R2 D R2 U' R2 D F2 B2 D L2 F2&flags=showalg
-
-### Gem wit a an easy two-cycle solution (DO NOT WORK!!!!)
-https://github.com/chrishunt/rubiks-cube
-
-Based on this, We can make a solution like this:
-
-Create tha APP in ROR
-One main screen to receive the cube description, send to a solution library and show the solution on the same screen
-(1 controller: cube, 1 action: setup, 1 model:cube)
-Another screen to show the solution animation, there is a 3D widget to display the solution:
-https://ruwix.com/widget/3d/?label=teste&alg=U R2 F' D' R U R2 F R B' L F2 U2 R2 D R2 U' R2 D F2 B2 D L2 F2&flags=showalg
-
-
 # IMPLEMENTATION
 
 Using ROR this implementation is very straigh forward
 
-    rails new mycube
+    rails new cube --database=postgresql
     rake db:setup
-    rails s
-
-    rails g model MagicCube
     rails g controller Cube solve show
-
+    rails s
 
 Start by your Views:
 
@@ -203,7 +196,7 @@ and we expect to show the cube image on the show screen
 
 ![3dwidget.png](3dwidget.png)
 
-To create such test we will use 
+To create such test we will use Capybara
 
 # Deploy
 
@@ -219,6 +212,4 @@ Visit your app
 ```terminal
     heroku open    
 ```
-
-
-
+or https://mighty-gorge-83383.herokuapp.com
