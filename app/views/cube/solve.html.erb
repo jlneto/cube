@@ -1,7 +1,7 @@
  <p>
     <label>
       Inform here the initial state for yor cube:
-      Instructions Below!
+      <%= link_to 'How?', "#intructions" %>
     </label>
   </p>
   <p>
@@ -9,15 +9,15 @@
   </p>
 
   <p>
-   <%= button_tag 'Scramble!', id: 'btn_scramble' %>
+   <%= button_tag 'Scramble', id: 'btn_scramble' %>
   </p>
   <p>
-    <%= button_tag 'Solve using CUBJES', id: 'btn_solve' %>
+    <%= button_tag 'Solve', id: 'btn_solve' %>
   </p>
 <%= form_tag cube_show_path, method: :get do %>
   <p>
     <label>
-      solutions movements:
+      Solution:
     </label>
   </p>
   <p>
@@ -28,7 +28,7 @@
   </p>
 <% end %>
 
-<h4>Instructions and Notation</h4>
+<h4 id='intructions'>Instructions and Notation</h4>
 <div style="width:50%; padding-left:38%;">
 <pre style="text-align:left">
 Sources: <%= link_to 'Ruwik','https://ruwix.com', target: '_blank' %> <%= link_to 'CUBEJS','https://www.npmjs.com/package/cubejs', target: '_blank' %>

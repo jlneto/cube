@@ -59,8 +59,3 @@ addEventListener("turbolinks:load", function (_event) {
         }
     })
 })
-
-
-
-
-

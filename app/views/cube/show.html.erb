@@ -1,18 +1,11 @@
-<h2>Your solution has <%= @steps %> steps</h2>
+<h4>Your solution has <%= @steps %> steps</h4>
 <div class="cube_display" style="width: 30%; padding-left:35%">
   <div class="roofpig" style="border-style: none" data-config="<%= @cube_params %>">
   </div>
 </div>
-<br/>
-<br/>
-<br/>
-<label>Solution:
-  <%= link_to 'Movements Notation', 'https://ruwix.com/the-rubiks-cube/notation/', target: '_blank' %>
-</label>
-<div style="max-width: 30%; padding-left:35%; font-size: 12px; font-family: Courier; text-align: justify">
-  <%= @solution %>
-</div>
 <p>
-  <%= link_to 'Solve a new one', cube_setup_path %>
+  <%= link_to 'Movements Notation', 'https://ruwix.com/the-rubiks-cube/notation/', target: '_blank' %>
 </p>
-
+<p>
+  <%= link_to 'Solve a new one', root_path %>
+</p>

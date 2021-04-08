@@ -1,15 +1,14 @@
 class CubeController < ApplicationController
 
-  def setup
-    @example = MagicCube.samples[0][0]
-    @initial_state = params[:initial_state] || @example
+  def solve
+    @initial_state = params[:initial_state] || MagicCube.samples[0][0]
     @solution = params[:solution]
   end
 
   def show
     @solution = params[:solution]
     @steps = @solution.split(' ').count
-    @cube_params = "alg=#{@solution}"
+    @cube_params = "alg=#{@solution}|flags=showalg"
   end
 
 end
