@@ -205,7 +205,7 @@ rails s
 
 To create such test we will use Capybara to reproduce the use case defined in it's DSL.
 
-```
+```ruby
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -219,11 +219,30 @@ rails generate rspec:install
 ```
 add the following lines to rails_helper.rb
 
-```
+```ruby
 require 'capybara'
 require 'capybara/rspec'
 require 'webdrivers'
 require 'capybara/rails'
+```
+
+Write the following test in rspec/features/solve_spec.rb
+
+```ruby
+require 'rails_helper'
+
+RSpec.describe "solve the cube", type: :feature, js: true do
+
+	it "should solve a cube" do
+		visit root_path
+		fill_in 'initial_state', with: 'BBORYYRGBWBGWGBGYWWOORRBYWOGGYGWOBOGOWBRBYRYRWOYROGRWY'
+		click_button 'btn_solve'
+		expect(page).to have_field('solution', with: "R' D F2 L' F B R' B' D' B U F2 U' R2 F2 R2 U' F2 R2 F2 D2 R2 U")
+		click_button 'btn_show'
+		expect(page).to have_content('Your solution has 23 steps')
+	end
+
+end
 ```
 
 Run the tests!
@@ -260,7 +279,10 @@ We did not cover all the roles, just the main ones, but you have all roles in th
 
 # REFERENCES
 
-- https://medium.com/@LucianeS/openup-um-processo-integrado-e-agil-a4400c17ce62
+- https://www.ibm.com/developerworks/rational/library/content/03July/1000/1251/1251_bestpractices_TP026B.pdf
+- https://en.wikipedia.org/wiki/Rational_Unified_Process
 - https://www.eclipse.org/epf/
 - https://www.eclipse.org/downloads/download.php?file=/technology/epf/PracticesLibrary/published/epf_practices_published_1.5.1.5_20121212.zip
 - https://www.eclipse.org/downloads/download.php?file=/technology/epf/OpenUP/published/openup_published_1.5.1.5_20121212.zip
+- https://medium.com/@LucianeS/openup-um-processo-integrado-e-agil-a4400c17ce62
+  
