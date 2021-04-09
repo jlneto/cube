@@ -206,14 +206,29 @@ rails s
 To create such test we will use Capybara to reproduce the use case defined in it's DSL.
 
 ```
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'capybara'
+end
+```
+```
+bundle install
+rails generate rspec:install
+```
+add the following lines to rails_helper.rb
 
-
+```
+require 'capybara'
+require 'capybara/rspec'
+require 'webdrivers'
+require 'capybara/rails'
 ```
 
 Run the tests!
 
 ```
-rake
 rspec
 ```
 
