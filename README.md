@@ -1,4 +1,26 @@
-# REQUIREMENTS:
+# Software Development Roles and Practices (or How to solve the Rubik's cube)
+
+Software development is not just coding, like many may think (just update your code to do this, and it is done! 😩)
+It involves many roles and practices in the complete development process if you want to avoid common software issues.
+We will develop an application to solve Rubik's code using all the practices defined in a formal software development process (OPEN UP) and show why all roles are needed to create maintainable and usable software.
+All these roles and practices are needed in any software development process (SCRUM, KANBAN...).
+The same person can perform different roles, but you must seek the role's objectives as acting in any relo.
+To make a clear relationship with this presentation and the OPEN UP, we will follow their terminology.
+
+![Open UP EPF generated website](img.png)
+
+Software development is a team process. Sorry coders, you are just 20% off the business 😁
+
+# The Project
+
+Let's start our project, we will skip the Project Manager Role and focus on
+the development part only. We will start with the Analyst who received a request
+to solve the Rubik's cube from a very large customer!
+
+## Role: Analyst
+
+![Analyst](img_2.png)
+
 Given the Rubik Cube, we need step-by-step instructions on how to solve it. 
 The faster, the better, but speed is not an issue.
 
@@ -11,88 +33,63 @@ We want to use the app this way:
 - If I need another solution, repeat the process.
 - It would be very nice to show the solution visually, if possible.
 
-
-# ANALISYS AND DESIGN
-Always look for existing solutions for similar problems.
-The time you spent in discovery, you will save much more in development.
-Searching the internet, you can find a lot of stuff about this cube, from competition to algorithms,
-tutorials.
-In our case, we are interested in how to solve. We find many tutorials and how to describe the steps
-General information about Rubik's Cube
-https://ruwix.com
-
-Are there finished libraries to give you the steps to solve it?  YES!!!!! Many!
-We searched: "Rubik code solution",  "Rubik code solution in ruby", "Rubik code solution in javascript".
-In the end, we selected these as promises:
-
-### solutiion methods
-https://rubikscu.be/#tutorial
-https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/step-1-first-layer-edges/
-
-### JS to solve the cube
-https://www.npmjs.com/package/cubejs
-
-### Gem wit a an easy two-cycle solution (DO NOT WORK!!!!)
-https://github.com/chrishunt/rubiks-cube
-
-### Library to display the cube Movements
-https://ruwix.com/widget/3d/?label=teste&alg=U R2 F' D' R U R2 F R B' L F2 U2 R2 D R2 U' R2 D F2 B2 D L2 F2&flags=showalg
-
-After this research, we decide to make a solution like this:
-
-Create the APP in ROR
-One main screen to receive the cube description, send to a solution library, and show the solution on the same screen.
-(1 controller: cube, 1 action: setup, 1 model:cube)
-On another screen show the solution animation, there is a 3D widget to display the solution:
-https://ruwix.com/widget/3d/?label=teste&alg=U R2 F' D' R U R2 F R B' L F2 U2 R2 D R2 U' R2 D F2 B2 D L2 F2&flags=showalg
-
 ### WIREFRAME
 
-Solve Screen
-```
-[ Logo ] Cube Solver
+![show](img_8.png)
 
-Inform here the initial state for yor cube: [ How? ]
-[                         ]
-[                         ]
-[                         ]
-[                         ]
-[                         ]
-[                         ]
+![solve](img_9.png)
 
-[ Scramble ]
+## Role: Architect
 
-[ Solve ]
+![Architect](img_3.png)
 
-Solution:
-[                         ]
-[                         ]
-[                         ]
-[                         ]
-[                         ]
-[                         ]
 
-[ Show ] => Show Screen
+### Envision the Architecture
 
-Instructions:
+As an architect, to start we always look for existing solutions for similar problems.
+The time you spent in discovery, is a well spent time, because we will save much more in the full development.
+Searching the internet, you can find a lot of stuff about the cube, tutorials, competitions, movement's notation, algorithms...,
+In our case, we are interested in how to solve. We find a very complet site about is at https://ruwix.com
 
-....
-....
-....
+About automatiing the solution, we are interested in libraries to give you the steps to solve it?
+We searched: "Rubik code solution",  "Rubik code solution in ruby", "Rubik code solution in javascript".
+In the end, we foud these options:
 
-```
-Show Screen
-```
-    Your solution has 23 steps
-```
-![3dwidget.png](3dwidget.png)
-```    
-    [movements notation]
-    [colve a new one]
+### How to solve the cube
+There are many option, form the simplest to more complex ones. Here are some:
+- https://rubikscu.be/#tutorial
+- https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/step-1-first-layer-edges/
 
-```
+## Automated solutions
+We serached for automated solutions in any language, we found many and selected these ones:
 
-# IMPLEMENTATION
+### Gem wit a an easy two-cycle solution
+In our tests, tt generates too many stesp (+400) or do not return at all.
+It was our first option, since it is a gem and our app is in Rails, but we discarded it.
+https://github.com/chrishunt/rubiks-cube
+
+### JS to solve the cube
+Very fast, fewer movements ~25 for any state. Lets use it!
+https://www.npmjs.com/package/cubejs
+
+### Library to display the cube Movements
+Very nice and easy to use 3D widget created and used by Ruwik site everywhere.
+
+[Example](https://ruwix.com/widget/3d/?label=teste&alg=U%20R2%20F%27%20D%27%20R%20U%20R2%20F%20R%20B%27%20L%20F2%20U2%20R2%20D%20R2%20U%27%20R2%20D%20F2%20B2%20D%20L2%20F2&flags=showalg)
+
+After the research, we decide to make a solution like this:
+
+## Refine the Architecture
+
+- Create the APP in ROR: One main screen to receive the cube description, send to a solution library, and show the solution on the same screen.
+(1 controller: cube, 1 action: setup, 1 model:cube)
+- Use the RUBJS javascript component to solve the cube: The cube description must follow the guideline defined by the CUBEJS solver
+- On another screen show the solution animation, Using the 3D widget to display the found solution.
+- For demonstration we host and deploy the application on Heroku in a free account
+
+
+# Role: Developer
+![Developer](img_4.png)
 
 Using ROR this implementation is very straigh forward
 
@@ -177,12 +174,16 @@ addEventListener("turbolinks:load", function (_event) {
         }
     })
 })
-
+```
+### Eat your own dog food!
+Run you application until it is good enough to show to others!
+```
+rails s
 ```
 
-Test it!
+# Role: Tester
 
-# Automated Test
+![Tester](img_5.png)
 
 Lets creata an automated test providng this cube state
 
@@ -192,13 +193,34 @@ and expected result should be
 
     R' D F2 L' F B R' B' D' B U F2 U' R2 F2 R2 U' F2 R2 F2 D2 R2 U
 
-and we expect to show the cube image on the show screen
+and we expect to show the cube image on the show screen exactly like defined in the fists page.
+after all movement the cube must be solved.
 
-![3dwidget.png](3dwidget.png)
+First we run it manually!
 
-To create such test we will use Capybara
 
-# Deploy
+```
+rails s
+```
+
+To create such test we will use Capybara to reproduce the use case defined in it's DSL.
+
+```
+
+
+```
+
+Run the tests!
+
+```
+rake
+rspec
+```
+
+
+# Role: Deployment Engineer
+
+![img_6.png](img_6.png)
 
 To deploy to heroku, create your account there and install the heroku client
     
@@ -213,3 +235,17 @@ Visit your app
     heroku open    
 ```
 or https://mighty-gorge-83383.herokuapp.com
+
+
+## Other Roles
+
+We did not cover all the roles, just the main ones, but you have all roles in the Open Up process.
+
+![Other Roles](img_7.png)
+
+# REFERENCES
+
+- https://medium.com/@LucianeS/openup-um-processo-integrado-e-agil-a4400c17ce62
+- https://www.eclipse.org/epf/
+- https://www.eclipse.org/downloads/download.php?file=/technology/epf/PracticesLibrary/published/epf_practices_published_1.5.1.5_20121212.zip
+- https://www.eclipse.org/downloads/download.php?file=/technology/epf/OpenUP/published/openup_published_1.5.1.5_20121212.zip
