@@ -21,17 +21,23 @@ to solve the Rubik's cube from a very large customer!
 
 ![Analyst](img_2.png)
 
-Given the Rubik Cube, we need step-by-step instructions on how to solve it. 
-The faster, the better, but speed is not an issue.
+Given the Rubik Cube, we need a web application that provide the user step-by-step instructions on how to solve it. 
+The faster, the better, but speed is not an issue. No need to teach how to solve, just to provide the solution.
+
+As an Analyst, we always look for existing solutions for similar problems.
+The time you spent in discovery, is a well spent time, because we will save much more in the full development.
+Searching the internet, you can find a lot of stuff about the cube, tutorials, competitions, movement's notation, algorithms...,
+In our case, we are interested in how to solve. We find a very complet site about is at https://ruwix.com
 
 ### USE CASE
-We want to use the app this way:
+Understanding the problem, we defined alog with the customer how this app should look like and defined
+the following use case for it:
 
 - We open the app
 - describe how my cube is now (color disposition on each face)
-- when finished describing it, hit a button to show me the solution
+- when finished describing it, hit a button to show me the solution in the same page
 - If I need another solution, repeat the process.
-- It would be very nice to show the solution visually, if possible.
+- It would be very nice to show the solution visually in a 3D animation, if possible.
 
 ### WIREFRAME
 
@@ -43,25 +49,22 @@ We want to use the app this way:
 
 ![Architect](img_3.png)
 
-
 ### Envision the Architecture
 
-As an architect, to start we always look for existing solutions for similar problems.
-The time you spent in discovery, is a well spent time, because we will save much more in the full development.
-Searching the internet, you can find a lot of stuff about the cube, tutorials, competitions, movement's notation, algorithms...,
-In our case, we are interested in how to solve. We find a very complet site about is at https://ruwix.com
-
-About automatiing the solution, we are interested in libraries to give you the steps to solve it?
-We searched: "Rubik code solution",  "Rubik code solution in ruby", "Rubik code solution in javascript".
-In the end, we foud these options:
+The problem is very clearly defined, so we nedd to find the most effective way to provide this app.
 
 ### How to solve the cube
-There are many option, form the simplest to more complex ones. Here are some:
+There are many options, form the simplest to more complex ones. Here are some:
 - https://rubikscu.be/#tutorial
 - https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/step-1-first-layer-edges/
 
+To make our own algorithim to solve it will be very difficult and time consuming, and for sure someone else has already did that.
+We are interested in existing libraries that provide all the steps to solve a Rubik's cube, there must be ready a solution for it.
+We searched: "Rubik code solution",  "Rubik code solution in ruby", "Rubik code solution in javascript".
+In the end, we foud these options:
+
 ## Automated solutions
-We serached for automated solutions in any language, we found many and selected these ones:
+We searched for automated solutions in any language, we found many and selected these ones:
 
 ### Gem wit a an easy two-cycle solution
 In our tests, tt generates too many stesp (+400) or do not return at all.
@@ -77,7 +80,7 @@ Very nice and easy to use 3D widget created and used by Ruwik site everywhere.
 
 [Example](https://ruwix.com/widget/3d/?label=teste&alg=U%20R2%20F%27%20D%27%20R%20U%20R2%20F%20R%20B%27%20L%20F2%20U2%20R2%20D%20R2%20U%27%20R2%20D%20F2%20B2%20D%20L2%20F2&flags=showalg)
 
-After the research, we decide to make a solution like this:
+After the research, we decide how to make it with our familiar tools:
 
 ## Refine the Architecture
 
@@ -217,6 +220,7 @@ end
 bundle install
 rails generate rspec:install
 ```
+
 add the following lines to rails_helper.rb
 
 ```ruby
@@ -224,6 +228,11 @@ require 'capybara'
 require 'capybara/rspec'
 require 'webdrivers'
 require 'capybara/rails'
+```
+Make sure rspec is working
+
+```
+rspec
 ```
 
 Write the following test in rspec/features/solve_spec.rb
@@ -245,7 +254,7 @@ RSpec.describe "solve the cube", type: :feature, js: true do
 end
 ```
 
-Run the tests!
+Run the test!
 
 ```
 rspec
@@ -256,19 +265,22 @@ rspec
 
 ![img_6.png](img_6.png)
 
-To deploy to heroku, create your account there and install the heroku client
+If the app is working fine, all automated tests are ok, time to deploy to production, and the more automated the better.
+We will deploy it to heroku as an example. Create your account there and install the heroku client if you alreay do not have it.
     
-```terminal
+After that, run the following commands:
+
+```bash
     heroku create
     git push heroku master
-    heroku run rake db:migrate   
 ```
+Heroku will deploy your app automatically as soon as it is commited to it's repository.
+If it is deployed correctly. Visit your app
 
-Visit your app
-```terminal
+```bash
     heroku open    
 ```
-or https://mighty-gorge-83383.herokuapp.com
+or you can see an example [here](https://mighty-gorge-83383.herokuapp.com)
 
 
 ## Other Roles
