@@ -127,17 +127,17 @@ To have these two screens we need a controller with two actions: solve and show
 
 The cube controller has these 2 actions:
 
-[controller source code](file://app/controllers/cube_controller.erb)
+[controller source code](https://github.com/jlneto/cube/blob/master/app/controllers/cube_controller.rb)
 
 The Solve action we will receive the input from the user and call the cube solver 
 using javascript, as defined in the wireframe
 
-[solve source code](file://app/views/cube/solve.html.erb)
+[solve source code](https://github.com/jlneto/cube/blob/master/app/views/cube/solve.html.erb)
  
 The Show action we will show the cube 3D widget that will display the 
 cube and animate its solution
 
-[show source code](file://app/views/cube/solve.html.erb)
+[show source code](https://github.com/jlneto/cube/blob/master/app/views/cube/show.html.erb)
 
 
 
