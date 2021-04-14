@@ -112,6 +112,7 @@ until you get a satisfaction solution for business and technical issues.
 
 ![img_12.png](img_12.png)
 
+(slides from Chris Alvarez’s presentation about Design)
 
 # Role: Developer
 ![Developer](img_4.png)
