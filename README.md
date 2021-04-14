@@ -186,6 +186,7 @@ rails s
 ```
 
 To create such test we will use Capybara to reproduce the use case defined in it's DSL.
+Add these lines to the [Gemfile](https://github.com/jlneto/cube/blob/master/Gemfile)
 
 ```ruby
 group :development, :test do
@@ -200,7 +201,7 @@ bundle install
 rails generate rspec:install
 ```
 
-add the following lines to rails_helper.rb
+add the following lines to [rails_helper.rb](https://github.com/jlneto/cube/blob/master/spec/rails_helper.rb)
 
 ```ruby
 require 'capybara'
@@ -216,22 +217,7 @@ rspec
 
 Write the following test in rspec/features/solve_spec.rb
 
-```ruby
-require 'rails_helper'
-
-RSpec.describe "solve the cube", type: :feature, js: true do
-
-	it "should solve a cube" do
-		visit root_path
-		fill_in 'initial_state', with: 'BBORYYRGBWBGWGBGYWWOORRBYWOGGYGWOBOGOWBRBYRYRWOYROGRWY'
-		click_button 'btn_solve'
-		expect(page).to have_field('solution', with: "R' D F2 L' F B R' B' D' B U F2 U' R2 F2 R2 U' F2 R2 F2 D2 R2 U")
-		click_button 'btn_show'
-		expect(page).to have_content('Your solution has 23 steps')
-	end
-
-end
-```
+[solve_spec.rb](https://github.com/jlneto/cube/blob/master/spec/features/solve_spec.rb)
 
 Run the test!
 
