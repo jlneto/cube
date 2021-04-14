@@ -2,7 +2,10 @@
 
 Software development is not just coding, like many may think (just update your code to do this, and it is done! 😩)
 It involves many roles and practices in the complete development process if you want to avoid common software issues.
-We will develop an application to solve Rubik's code using all the practices defined in a formal software development process (OPEN UP) and show why all roles are needed to create maintainable and usable software.
+
+We will develop an application to solve Rubik's code using all the practices defined in a formal software development process (OPEN UP) 
+and show why all roles are needed to create maintainable and usable software.
+
 All these roles and practices are needed in any software development process (SCRUM, KANBAN...).
 The same person can perform different roles, but you must seek the role's objectives as acting in any role.
 To make a clear relationship with this presentation and the OPEN UP, we will follow their terminology.
