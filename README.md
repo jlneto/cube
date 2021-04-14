@@ -4,7 +4,7 @@ Software development is not just coding, like many may think (just update your c
 It involves many roles and practices in the complete development process if you want to avoid common software issues.
 We will develop an application to solve Rubik's code using all the practices defined in a formal software development process (OPEN UP) and show why all roles are needed to create maintainable and usable software.
 All these roles and practices are needed in any software development process (SCRUM, KANBAN...).
-The same person can perform different roles, but you must seek the role's objectives as acting in any relo.
+The same person can perform different roles, but you must seek the role's objectives as acting in any role.
 To make a clear relationship with this presentation and the OPEN UP, we will follow their terminology.
 
 ![Open UP EPF generated website](img.png)
@@ -29,17 +29,14 @@ The time you spent in discovery, is a well spent time, because we will save much
 Searching the internet, you can find a lot of stuff about the cube, tutorials, competitions, movement's notation, algorithms...,
 In our case, we are interested in how to solve. We find a very complet site about is at https://ruwix.com
 
-We also dound this!
-
+We also found this:
 [Asolver](https://youtu.be/XRHKbgQ0Dj0)
 
 ![img_10.png](img_10.png)
 
 
-Our solution is more simple:
-
 ### USE CASE
-Understanding the problem, we defined alog with the customer how this app should look like and defined
+Understanding the problem, we defined along with the customer how this app should look like and defined
 the following use case for it:
 
 - We open the app
@@ -49,6 +46,7 @@ the following use case for it:
 - It would be very nice to show the solution visually in a 3D animation, if possible.
 
 ### WIREFRAME
+After a lot of research ans considering some contraints of knowledge and time, we defined a simpler solution:
 
 ![show](img_8.png)
 
@@ -104,7 +102,7 @@ After the research, we decide how to make it with our familiar tools:
 ### Obs:
 The analyst/Architecure tasks are very linked, we may change the desired outcome base on the 
 available technology or resources, so its very common to both work together in many interactions 
-until you get a satisfaction solution for business and technical issues.
+until you get a satisfactory solution for business and technology.
 
 ![img_13.png](img_13.png)
 
@@ -121,23 +119,27 @@ Using ROR this implementation is very straigh forward
 
     rails new cube --database=postgresql
     rake db:setup
-    rails g controller Cube solve show
     rails s
 
-Start by your Views:
+To have these two screens we need a controller with two actions: solve and show
 
-Solve
-Here we will receive the input from the user and call the cube solver 
+    rails g controller Cube solve show
+
+The cube controller has these 2 actions:
+
+[controller source code](file://app/controllers/cube_controller.erb)
+
+The Solve action we will receive the input from the user and call the cube solver 
 using javascript, as defined in the wireframe
-[app/views/cube/solve.html.erb]
- 
-Show
-we in include the cube 3D widget that will display the 
-cube and animate its solution
-[app/views/cube/solve.html.erb]
 
-The cube controller
-[app/controllers/cube_controller.erb]
+[solve source code](file://app/views/cube/solve.html.erb)
+ 
+The Show action we will show the cube 3D widget that will display the 
+cube and animate its solution
+
+[show source code](file://app/views/cube/solve.html.erb)
+
+
 
 Test it!
 
