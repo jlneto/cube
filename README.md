@@ -32,8 +32,7 @@ In our case, we are interested in how to solve. We find a very complet site abou
 We also found this:
 [Asolver](https://youtu.be/XRHKbgQ0Dj0)
 
-![img_10.png](img_10.png =24x48)
-
+![img_10.png](img_10.png)
 
 ### USE CASE
 Understanding the problem, we defined along with the customer how this app should look like and defined
