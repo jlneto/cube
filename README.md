@@ -29,6 +29,15 @@ The time you spent in discovery, is a well spent time, because we will save much
 Searching the internet, you can find a lot of stuff about the cube, tutorials, competitions, movement's notation, algorithms...,
 In our case, we are interested in how to solve. We find a very complet site about is at https://ruwix.com
 
+We also dound this!
+
+[Asolver](https://youtu.be/XRHKbgQ0Dj0)
+
+![img_10.png](img_10.png)
+
+
+Our solution is more simple:
+
 ### USE CASE
 Understanding the problem, we defined alog with the customer how this app should look like and defined
 the following use case for it:
@@ -89,6 +98,19 @@ After the research, we decide how to make it with our familiar tools:
 - Use the RUBJS javascript component to solve the cube: The cube description must follow the guideline defined by the CUBEJS solver
 - On another screen show the solution animation, Using the 3D widget to display the found solution.
 - For demonstration we host and deploy the application on Heroku in a free account
+
+
+
+### Obs:
+The analyst/Architecure tasks are very linked, we may change the desired outcome base on the 
+available technology or resources, so its very common to both work together in many interactions 
+until you get a satisfaction solution for business and technical issues.
+
+![img_13.png](img_13.png)
+
+![img_11.png](img_11.png)
+
+![img_12.png](img_12.png)
 
 
 # Role: Developer
