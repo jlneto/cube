@@ -258,6 +258,8 @@ If it is deployed correctly. Visit your app
 ```
 or you can see an example [here](https://mighty-gorge-83383.herokuapp.com)
 
+![final application](cubesolver.gif)
+
 
 ### Other Roles
 
