@@ -7,8 +7,8 @@ We will develop an application to solve Rubik's code using all the practices def
 and show why all roles are needed to create maintainable and usable software.
 
 All these roles and practices are needed in any software development process (SCRUM, KANBAN...).
-The same person can perform different roles, but you must seek the role's objectives as acting in any role.
-To make a clear relationship with this presentation and the OPEN UP, we will follow their terminology.
+The same person can perform different roles, but you must seek the role's objectives while acting in any role.
+To make a clear relationship between this presentation and the OPEN UP, we will follow their terminology.
 
 ![Open UP EPF generated website](img.png)
 
