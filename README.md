@@ -35,8 +35,7 @@ In our case, we are interested in how to solve. We find a very complete site abo
 
 We also found this very nice app that does exactly what we need!
 
-[[Asolver video on YouTube](img_10.png)](https://youtu.be/XRHKbgQ0Dj0)
-
+[![Asolver video on YouTube](img_10.png)](https://youtu.be/XRHKbgQ0Dj0)
 
 *Disclaimer: Any coincidence with features, screens, or use cases was pure similarity*
 
