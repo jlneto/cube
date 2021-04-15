@@ -34,9 +34,11 @@ Searching the internet, you can find a lot of stuff about the cube, tutorials, c
 In our case, we are interested in how to solve. We find a very complete site about is at https://ruwix.com which I used a main reference.
 
 We also found this very nice app that does exactly what we need!
-[Asolver](https://youtu.be/XRHKbgQ0Dj0)
 
+[Asolver video on YouTube
 ![img_10.png](img_10.png)
+](https://youtu.be/XRHKbgQ0Dj0)
+
 
 *Disclaimer: Any coincidence with features, screens, or use cases was pure similarity*
 
@@ -122,13 +124,17 @@ until you get a satisfactory solution for business and technology.
 
 Using ROR this implementation is very straigh forward
 
-    rails new cube --database=postgresql
-    rake db:setup
-    rails s
+```bash
+rails new cube --database=postgresql
+rake db:setup
+rails s
+```
 
 To have these two screens we need a controller with two actions: solve and show
 
-    rails g controller Cube solve show
+```bash
+rails g controller Cube solve show
+```
 
 The cube controller has these 2 actions:
 
@@ -144,15 +150,17 @@ cube and animate its solution
 
 [show source code](https://github.com/jlneto/cube/blob/master/app/views/cube/show.html.erb)
 
-
-
 Test it!
 
-    rails s
+```bash
+rails s
+```
 
 ### Solving the cube
 
-    yarn add cubejs
+```bash
+yarn add cubejs
+```
 
 in app/javascript/packs/application.js
 add this code to create cube state sample [scramble]
@@ -164,7 +172,7 @@ with the movements notation
 
 ### Eat your own dog food!
 Run you application until it is good enough to show to others!
-```
+```bash
 rails s
 ```
 
@@ -186,7 +194,7 @@ after all movement the cube must be solved.
 First we run it manually!
 
 
-```
+```bash
 rails s
 ```
 
@@ -201,7 +209,8 @@ group :development, :test do
   gem 'capybara'
 end
 ```
-```
+run these commands:
+```bash
 bundle install
 rails generate rspec:install
 ```
@@ -216,7 +225,7 @@ require 'capybara/rails'
 ```
 Make sure rspec is working
 
-```
+```bash
 rspec
 ```
 
@@ -226,7 +235,7 @@ Write the following test in rspec/features/solve_spec.rb
 
 Run the test!
 
-```
+```bash
 rspec
 ```
 
@@ -253,7 +262,7 @@ If it is deployed correctly. Visit your app
 or you can see an example [here](https://mighty-gorge-83383.herokuapp.com)
 
 
-## Other Roles
+### Other Roles
 
 We did not cover all the roles, just the main ones, but you have all roles in the Open Up process.
 
