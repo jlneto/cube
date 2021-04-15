@@ -18,7 +18,7 @@ Software development is a team process. Sorry coders, you are just 20% off the b
 
 Let's start our project, we will skip the Project Manager Role and focus on
 the development part only. We will start with the Analyst who received a request
-to solve the Rubik's cube from a very large customer!
+to solve the Rubik's cube from a very strategic customer ASAP!
 
 ## Role: Analyst
 
@@ -27,15 +27,18 @@ to solve the Rubik's cube from a very large customer!
 Given the Rubik Cube, we need a web application that provide the user step-by-step instructions on how to solve it. 
 The faster, the better, but speed is not an issue. No need to teach how to solve, just to provide the solution.
 
-As an Analyst, we always look for existing solutions for similar problems.
-The time you spent in discovery, is a well spent time, because we will save much more in the full development.
-Searching the internet, you can find a lot of stuff about the cube, tutorials, competitions, movement's notation, algorithms...,
-In our case, we are interested in how to solve. We find a very complet site about is at https://ruwix.com
+As an Analyst, I always look for existing solutions for similar problems, specially when I suspect I am not the only one with a similar problem.
+The time you spent in discovery, is a well spent time, we will save much more in the later development.
 
-We also found this:
+Searching the internet, you can find a lot of stuff about the cube, tutorials, competitions, movement's notation, algorithms...,
+In our case, we are interested in how to solve. We find a very complete site about is at https://ruwix.com which I used a main reference.
+
+We also found this very nice app that does exactly what we need!
 [Asolver](https://youtu.be/XRHKbgQ0Dj0)
 
 ![img_10.png](img_10.png)
+
+*Disclaimer: Any coincidence with features, screens, or use cases was purely similarity*
 
 ### USE CASE
 Understanding the problem, we defined along with the customer how this app should look like and defined
