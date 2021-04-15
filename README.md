@@ -38,7 +38,7 @@ We also found this very nice app that does exactly what we need!
 
 ![img_10.png](img_10.png)
 
-*Disclaimer: Any coincidence with features, screens, or use cases was purely similarity*
+*Disclaimer: Any coincidence with features, screens, or use cases was pure similarity*
 
 ### USE CASE
 Understanding the problem, we defined along with the customer how this app should look like and defined
