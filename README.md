@@ -275,4 +275,9 @@ We did not cover all the roles, just the main ones, but you have all roles in th
 - https://www.eclipse.org/downloads/download.php?file=/technology/epf/PracticesLibrary/published/epf_practices_published_1.5.1.5_20121212.zip
 - https://www.eclipse.org/downloads/download.php?file=/technology/epf/OpenUP/published/openup_published_1.5.1.5_20121212.zip
 - https://medium.com/@LucianeS/openup-um-processo-integrado-e-agil-a4400c17ce62
+- https://github.com/ldez/cubejs
+- http://kociemba.org/cube.htm
+- https://stackoverflow.com/questions/44556692/javascript-get-average-color-from-a-certain-area-of-an-image/44557266
+- https://medium.com/swlh/detect-color-objects-with-tracking-js-623a15b14732
+  
   
