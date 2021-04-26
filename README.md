@@ -133,9 +133,30 @@ To have these two screens we need a controller with two actions: solve and show
 rails g controller Cube solve show
 ```
 
+Config root to be the solve screen. add this line to routes.rb
+```ruby
+root to: 'cube#solve'
+```
+
 The cube controller has these 2 actions:
 
 [controller source code](https://github.com/jlneto/cube/blob/master/app/controllers/cube_controller.rb)
+
+```ruby
+class CubeController < ApplicationController
+  def solve
+    @initial_state = params[:initial_state] || 'YOWBYBYBOYRRYGROBWGOBRROYWWOGBRWWGOORYRYBYRGGBGBWOGGWW'
+    @solution = params[:solution]
+  end
+  def show
+    @solution = params[:solution]
+    @steps = @solution.split(' ').count if @solution
+    @cube_params = "alg=#{@solution}|flags=showalg"
+  end
+end
+```
+
+## Build the Views
 
 The Solve action we will receive the input from the user and call the cube solver 
 using javascript, as defined in the wireframe
@@ -147,17 +168,85 @@ cube and animate its solution
 
 [show source code](https://github.com/jlneto/cube/blob/master/app/views/cube/show.html.erb)
 
+add the logo image to the images folder app/assets/images we are using in the layout
+
+    rubik-cube.svg
+
+[show source code](https://github.com/jlneto/cube/blob/master/app/views/layouts/application.html.erb)
+
+
 Test it!
 
 ```bash
 rails s
 ```
 
+### Displaying the cube solution
+
+Add the jquery libraries needed:
+
+```html
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <%= javascript_include_tag "roofpig_and_three.min", 'data-turbolinks-track': 'reload' %>
+```
+
+add some css to display the cube solver in app/assets/stylesheets/cube.css
+
+```css
+// Place all the styles related to the cube controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+/*Roofpig BEGIN*/
+.roofpig:before,.roofpig:after{content:" ";display:table}
+.roofpig:after{clear:both}
+.roofpig{border:none !important;margin:5px auto 25px;max-width:500px;color:#000;font-weight:bold;font-size:1.1em}
+.roofpig.inlineblock{margin:5px 20px 25px;vertical-align:top}
+.roofpig > div{height:auto !important;border:none !important;margin-top:5px}
+.roofpig-algtext{background-color:transparent;height:auto !important;font-size:15px !important;line-height:19px;font-weight:bold;text-align:left;margin-bottom:7px}
+.roofpig-past-algtext{background-color:#a9cef5;border-radius:5px}
+.roofpig-button{border-radius:5px;border:none;font-weight:bold;line-height:22px;height:27px !important;margin-right:6px;text-indent:-117px;font-size:10px !important;overflow:hidden;width:34px !important}
+.width150 .roofpig-button{width:30px !important}
+.roofpig-count{font-weight:bold;color:#2e649e;width:auto;margin-left:2px;display:inline-block}
+.width100{width:100px}
+.width150{width:150px}
+.width200{width:200px}
+.width250{max-width:250px}
+.width300{max-width:300px}
+.width350{max-width:350px}
+.width400{max-width:400px}
+.width450{max-width:450px}
+.width500{max-width:500px}
+.widget-container{margin:0 0 30px}
+#rightSidebarContent{padding:30px}
+#play-1{animation:firstPlayButtonBlinking 5s infinite}
+@keyframes firstPlayButtonBlinking{0%{background-color:#4287d2; }
+  70%{background-color:#4287d2; }
+  80%{background-color:#EEEEEE; }
+  90%{background-color:#f5111b; }
+  100%{background-color:#4287d2; }
+}
+.roofpig-help-button{display:none}
+/*Roofpig END*/
+```
+
+You may receive this error:
+```ruby
+Sprockets::Rails::Helper::AssetNotPrecompiled in Cube#solve
+```
+
+To solve this, add this line to config initilizer config/initializers/assets.rb
+
+```ruby
+Rails.application.config.assets.precompile += %w(roofpig_and_three.min.js)
+```
+
+
 ### Solving the cube
 
 ```bash
 yarn add cubejs
 ```
+
 
 in app/javascript/packs/application.js
 add this code to create cube state sample [scramble]
@@ -166,6 +255,55 @@ with the movements notation
 
 [application.js](https://github.com/jlneto/cube/blob/master/app/javascript/packs/application.js)
 
+```javascript
+// using cubejs to solve the cube, linked to two buttons
+const Cube = require('cubejs');
+// This takes 4-5 seconds on a modern computer
+Cube.initSolver();
+
+function solveCube(colorString) {
+    var faceString = color_to_face(colorString)
+    let cube = Cube.fromString(faceString);
+    let solution = cube.solve(50)
+    return solution
+}
+
+function color_to_face(color_string) {
+    const conv = {"W": "D", "O": "B", "R": "F", "G": "R", "Y": "U", "B": "L"};
+    let face_string = "";
+    color_string.split('').forEach(function(c) {
+        face_string = face_string + conv[c]
+    })
+    return face_string
+}
+
+function face_to_color(face_string) {
+    const conv = {"F": "R", "R": "G", "L": "B", "U": "Y", "B": "O", "D": "W"};
+    let color_string = "";
+    face_string.split('').forEach(function(c) {
+        color_string = color_string + conv[c]
+    })
+    return color_string
+}
+
+addEventListener("turbolinks:load", function (_event) {
+    $("#btn_scramble").click(function(){
+        let cube = Cube.random()
+        let faceString = cube.asString()
+        let colorString = face_to_color(faceString)
+        $('#initial_state').val(colorString)
+    });
+    $("#btn_solve").click(function(){
+        if ($('#initial_state').length > 0) {
+            let initialState = $('#initial_state').val()
+            initialState = initialState.replace(/\s/g, '')
+            initialState = initialState.replace(/\n/g, '')
+            let solution = solveCube(initialState)
+            $('#solution').val(solution)
+        }
+    })
+})
+```
 
 ### Eat your own dog food!
 Run you application until it is good enough to show to others!
@@ -201,9 +339,8 @@ Add these lines to the [Gemfile](https://github.com/jlneto/cube/blob/master/Gemf
 ```ruby
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  ...
   gem 'rspec-rails'
-  gem 'capybara'
 end
 ```
 run these commands:
@@ -229,7 +366,22 @@ rspec
 Write the following test in rspec/features/solve_spec.rb
 
 [solve_spec.rb](https://github.com/jlneto/cube/blob/master/spec/features/solve_spec.rb)
+```ruby
+require 'rails_helper'
 
+RSpec.describe "solve the cube", type: :feature, js: true do
+
+	it "should solve a cube" do
+		visit root_path
+		fill_in 'initial_state', with: 'BBORYYRGBWBGWGBGYWWOORRBYWOGGYGWOBOGOWBRBYRYRWOYROGRWY'
+		click_button 'btn_solve'
+		expect(page).to have_field('solution', with: "R' D F2 L' F B R' B' D' B U F2 U' R2 F2 R2 U' F2 R2 F2 D2 R2 U")
+		click_button 'btn_show'
+		expect(page).to have_content('Your solution has 23 steps')
+	end
+
+end
+```
 Run the test!
 
 ```bash
