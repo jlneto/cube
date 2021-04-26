@@ -124,6 +124,7 @@ Using ROR this implementation is very straigh forward
 ```bash
 rails new cube --database=postgresql
 rake db:setup
+rake db:migrate
 rails s
 ```
 
@@ -168,12 +169,22 @@ cube and animate its solution
 
 [show source code](https://github.com/jlneto/cube/blob/master/app/views/cube/show.html.erb)
 
-add the logo image to the images folder app/assets/images we are using in the layout
+In the layout we need to add our app header logo. 
+Add the logo image to the images folder app/assets/images
 
     rubik-cube.svg
 
 [show source code](https://github.com/jlneto/cube/blob/master/app/views/layouts/application.html.erb)
-
+```html
+  <body class="cube_app">
+    <h2 style="vertical-align: center">
+      <%= image_tag 'rubik-cube.svg', height: '60px' %>
+      Cube Solver
+    </h2>
+    <%= yield %>
+  </body>
+</html>
+```
 
 Test it!
 
@@ -240,13 +251,15 @@ To solve this, add this line to config initilizer config/initializers/assets.rb
 Rails.application.config.assets.precompile += %w(roofpig_and_three.min.js)
 ```
 
+Test the solution display with any solution, for example:
+
+    R' D F2 L' F B R' B' D' B U F2 U' R2 F2 R2 U' F2 R2 F2 D2 R2 U
 
 ### Solving the cube
 
 ```bash
 yarn add cubejs
 ```
-
 
 in app/javascript/packs/application.js
 add this code to create cube state sample [scramble]
