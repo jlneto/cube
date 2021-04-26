@@ -172,7 +172,7 @@ cube and animate its solution
 In the layout we need to add our app header logo. 
 Add the logo image to the images folder app/assets/images
 
-    rubik-cube.svg
+[rubik-cube.svg](https://upload.wikimedia.org/wikipedia/commons/a/a6/Rubik%27s_cube.svg)
 
 [show source code](https://github.com/jlneto/cube/blob/master/app/views/layouts/application.html.erb)
 ```html
@@ -186,6 +186,10 @@ Add the logo image to the images folder app/assets/images
 </html>
 ```
 
+on app/assets/stylesheets/application.css add
+```css
+.cube_app { font-family: Arial; text-align: center; }
+```
 Test it!
 
 ```bash
@@ -194,8 +198,10 @@ rails s
 
 ### Displaying the cube solution
 
-Add the jquery libraries needed:
+Download the cube JS library from here:
+[roofpig_and_three.min.js](https://github.com/larspetrus/Roofpig/blob/master/roofpig_and_three.min.js)
 
+Add the jquery libraries needed:
 ```html
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <%= javascript_include_tag "roofpig_and_three.min", 'data-turbolinks-track': 'reload' %>
