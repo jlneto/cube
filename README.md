@@ -207,7 +207,7 @@ Add the jquery libraries needed:
     <%= javascript_include_tag "roofpig_and_three.min", 'data-turbolinks-track': 'reload' %>
 ```
 
-add some css to display the cube solver in app/assets/stylesheets/cube.css
+add some css to display the cube solver in [app/assets/stylesheets/cube.css](app/assets/stylesheets/cube.css)
 
 ```css
 // Place all the styles related to the cube controller here.
@@ -419,7 +419,7 @@ After that, run the following commands:
 
 ```bash
     heroku create
-    git push heroku master
+    git push heroku master:main
 ```
 Heroku will deploy your app automatically as soon as it is commited to it's repository.
 If it is deployed correctly. Visit your app
