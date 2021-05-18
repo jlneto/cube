@@ -123,6 +123,7 @@ Using ROR this implementation is very straigh forward
 
 ```bash
 rails new cube --database=postgresql
+cd cube
 rake db:setup
 rake db:migrate
 rails s
