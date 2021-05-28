@@ -451,5 +451,8 @@ We did not cover all the roles, just the main ones, but you have all roles in th
 - http://kociemba.org/cube.htm
 - https://stackoverflow.com/questions/44556692/javascript-get-average-color-from-a-certain-area-of-an-image/44557266
 - https://medium.com/swlh/detect-color-objects-with-tracking-js-623a15b14732
-  
-  
+
+
+
+https://medium.com/@hugooodias/deploying-a-rails-app-to-amazon-elasticbeanstalk-in-2016-c4e833c687c0
+https://www.honeybadger.io/blog/rails-6-aws-elastic-beanstalk/
