@@ -1,0 +1,15 @@
+AWSConfigurationTemplateVersion: 1.1.0.0
+EnvironmentConfigurationMetadata:
+  Description: Configuration created from the EB CLI using "eb config save".
+EnvironmentTier:
+  Type: Standard
+  Name: WebServer
+OptionSettings:
+  aws:elasticbeanstalk:environment:
+    ServiceRole: arn:aws:iam::676854543053:role/aws-elasticbeanstalk-service-role
+  aws:autoscaling:launchconfiguration:
+    DisableIMDSv1: true
+    IamInstanceProfile: aws-elasticbeanstalk-ec2-role
+Platform:
+  PlatformArn: arn:aws:elasticbeanstalk:us-west-2::platform/Ruby 2.7 running on 64bit
+    Amazon Linux 2/3.2.5
