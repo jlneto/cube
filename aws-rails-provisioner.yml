@@ -1,0 +1,23 @@
+version: '0'
+
+vpc:
+  max_az: 2
+  enable_dns: true
+services:
+  cube:
+    source_path: . # relative path from `aws-rails-provisioner.yml`
+    fargate:
+      desired_count: 2
+      memory: 512
+      cpu: 256
+      envs:
+        PORT: 80
+        RAILS_LOG_TO_STDOUT: true
+      public: true
+    scaling:
+      max_capacity: 3
+      on_cpu:
+        target_util_percent: 80
+        scale_in_cool_down: 300
+      on_requests:
+        requests_per_target: 1000
